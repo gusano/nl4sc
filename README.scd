@@ -1,7 +1,11 @@
 //nonlinear dynamical systems
 //ugens and classes
-//maintain in github 
+
+//maintained in github 
 https://github.com/yotamorimoto/nl4sc
+
+//.zip package
+http://yotamorimoto.github.com/nl4sc/
 
 "logistic map"
 [Logist0]	
