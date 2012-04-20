@@ -30,7 +30,7 @@
 [FIS]
 
 //reference
-talk in supercollider symposium 2012
+talk in the supercollider symposium 2012
 
 //contact
 yota morimoto
