@@ -1,0 +1,41 @@
+CLASS:: Plogist
+summary:: pattern logistic map
+categories:: nl4sc, Streams-Patterns-Events>Patterns
+related:: Classes/NLUGen
+
+math::
+1\over\sqrt{x^\pi}
+::
+
+CLASSMETHODS::
+
+METHOD:: new
+
+argument:: r
+equation variable [1.0-2.0]
+
+argument:: xi
+initial value of x [0.0-1.0]
+
+argument:: length
+
+returns:: a Plogist value range [-1.0-1.0]
+
+EXAMPLES::
+
+code::
+s.boot;
+
+// as degree
+p = Plogist(1.5);
+Pbind(\degree, (p * 4 + 4).trunc, \dur, 0.125, \amp, 0.1).play;
+
+// expand
+p = Plogist(1.5, [0.3, 0.1], inf);
+Pbind(\degree, (p * 4 + 4).trunc, \dur, 0.125, \amp, 0.1).play;
+
+// change r
+p = Plogist(Pseries(1.2, 0.8/500, 500));
+Pbind(\degree, (p * 8 + 8).trunc, \dur, 0.05, \amp, 0.1).play;
+
+::
