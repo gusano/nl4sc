@@ -4,7 +4,7 @@
 /* TODO 
 3D attractors Plorenz, Plangford, Prossler, Prabinovich?
 does anybody know more 3D attractors?
-multiout ugens
+multiout ugens, Phcm
 */
 
 "logistic map"
