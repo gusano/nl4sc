@@ -1,8 +1,11 @@
 //nl4sc: nonlinear dynamical systems for supercollider
 //ugens and classes
 
-//maintained in github 
-https://github.com/yotamorimoto/nl4sc
+/* TODO 
+3D attractors Plorenz, Plangford, Prossler, Prabinovich?
+does anybody know more 3D attractors?
+multiout ugens
+*/
 
 "logistic map"
 [Logist0]	
@@ -40,3 +43,6 @@ talk in the supercollider symposium 2012
 //contact
 yota morimoto
 yotamorimoto [at] gmail.com
+
+//maintained in github 
+https://github.com/yotamorimoto/nl4sc
