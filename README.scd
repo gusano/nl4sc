@@ -1,11 +1,8 @@
-//nonlinear dynamical systems
+//nl4sc: nonlinear dynamical systems for supercollider
 //ugens and classes
 
 //maintained in github 
 https://github.com/yotamorimoto/nl4sc
-
-//.zip package
-http://yotamorimoto.github.com/nl4sc/
 
 "logistic map"
 [Logist0]	
@@ -18,11 +15,13 @@ http://yotamorimoto.github.com/nl4sc/
 [CML0]
 [CML1]
 [CML2]
+[Pcml]
 
 "globally coupled map"
 [GCM0]
 [GCM1]
 [GCM2]
+[Pgcm]
 
 "hypercubic map"
 [HCM0]
