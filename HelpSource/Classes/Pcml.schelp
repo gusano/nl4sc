@@ -1,0 +1,52 @@
+
+CLASS:: Pcml
+summary:: pattern coupled map lattice
+categories:: nl4sc, Streams-Patterns-Events>Patterns
+related:: Classes/NLUGen
+
+description::
+implements coupled map lattice where f(x) is the logistic equation whose variable is r :
+math::
+x_{n+1}(i) = (1 - g) f(x_{n}(i)) + {g \over 2} (f(x_{n}(i-1)) + f(x_{n}(i+1)))
+::
+
+CLASSMETHODS::
+
+METHOD:: new
+
+argument:: list
+a list of initial values of x in the lattice
+
+argument:: r
+equation variable [1.0, 2.0]
+
+argument:: g
+coupling strength [0.0, 1.0]
+
+argument:: repeats
+stream length
+
+returns:: as a stream, list of values in range  [-1.0, 1.0]
+
+INSTANCEMETHODS::
+private:: r, g, f, evolve, embedInStream
+
+
+EXAMPLES::
+
+code::
+s.boot;
+
+// as degree, patterns transmit spatially
+p = Pcml(Array.fill(5, { 0.1 }), 1.8, 0.3, inf);
+Pbind(\degree, (p * 8).trunc.trace, \dur, 0.125, \amp, 0.1, \pan, Array.series(5, -1, 2/5)).play;
+
+// change r
+p = Pcml(Array.fill(5, { 0.1 }), Pseries(1.2, 0.8/500, 500), 0.3, inf);
+Pbind(\degree, (p * 8).trunc, \dur, 0.125, \amp, 0.1, \pan, Array.series(5, -1, 2/5)).play;
+
+// change g
+p = Pcml(Array.fill(5, { 0.1 }), 2.0, Pseries(0, 1/500, 500), inf);
+Pbind(\degree, (p * 12).trunc, \dur, 0.125, \amp, 0.1, \pan, Array.series(5, -1, 2/5)).play;
+
+::

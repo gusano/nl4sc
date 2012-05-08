@@ -1,0 +1,35 @@
+
+CLASS:: Logist0
+summary:: ugen logistic map
+categories:: nl4sc, UGens>nl4sc
+
+description::
+implements the quadratic recurrence equation without interpolation:
+math::
+x_{n+1} = 1 - rx_{n}^2
+::
+
+CLASSMETHODS::
+
+METHOD:: ar
+
+argument:: freq
+iteration frequency
+
+argument:: r
+equation variable [1.0, 2.0]
+
+argument:: xi
+initial value of x [0.0, 1.0]
+
+returns:: values of xn in range  [-1.0, 1.0]
+
+
+EXAMPLES::
+
+code::
+s.boot;
+
+// modulate r
+{ Logist0.ar(SampleRate.ir, MouseY.kr(1.5, 1.9)) * 0.1 }.play;
+::

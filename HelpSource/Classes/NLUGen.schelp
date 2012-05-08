@@ -1,0 +1,7 @@
+
+CLASS:: NLUGen
+summary:: ugen nonlinear dynamical systems
+categories:: nl4sc, UGens>nl4sc
+
+description::
+an abstract class for the subclasses.

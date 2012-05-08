@@ -1,10 +1,13 @@
+
 CLASS:: Plogist
 summary:: pattern logistic map
 categories:: nl4sc, Streams-Patterns-Events>Patterns
 related:: Classes/NLUGen
 
+description::
+implements the quadratic recurrence equation:
 math::
-1\over\sqrt{x^\pi}
+x_{n+1} = 1 - rx_{n}^2
 ::
 
 CLASSMETHODS::
@@ -12,14 +15,19 @@ CLASSMETHODS::
 METHOD:: new
 
 argument:: r
-equation variable [1.0-2.0]
+equation variable [1.0, 2.0]
 
 argument:: xi
-initial value of x [0.0-1.0]
+initial value of x [0.0, 1.0]
 
 argument:: length
+stream length
 
-returns:: a Plogist value range [-1.0-1.0]
+returns:: as a stream, values of xn in range  [-1.0, 1.0]
+
+INSTANCEMETHODS::
+private:: r, xi, length, embedInStream
+
 
 EXAMPLES::
 
@@ -28,14 +36,14 @@ s.boot;
 
 // as degree
 p = Plogist(1.5);
-Pbind(\degree, (p * 4 + 4).trunc, \dur, 0.125, \amp, 0.1).play;
+Pbind(\degree, (p * 4).trunc, \dur, 0.125, \amp, 0.1).play;
 
 // expand
 p = Plogist(1.5, [0.3, 0.1], inf);
-Pbind(\degree, (p * 4 + 4).trunc, \dur, 0.125, \amp, 0.1).play;
+Pbind(\degree, (p * 4).trunc, \dur, 0.125, \amp, 0.1).play;
 
 // change r
 p = Plogist(Pseries(1.2, 0.8/500, 500));
-Pbind(\degree, (p * 8 + 8).trunc, \dur, 0.05, \amp, 0.1).play;
+Pbind(\degree, (p * 8).trunc, \dur, 0.05, \amp, 0.1).play;
 
 ::

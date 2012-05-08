@@ -1,0 +1,7 @@
+
+CLASS:: NLMultiOutUGen
+summary:: multioutugen nonlinear dynamical systems
+categories:: nl4sc, UGens>nl4sc
+
+description::
+an abstract class for the subclasses.
