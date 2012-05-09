@@ -369,7 +369,8 @@ void CML0_next(CML0 *unit, int inNumSamples)
 		if(counter >= spc){
 			counter -= spc;
 			for (int i=1; i<LATTICE-1; i++)
-				x[i] = (1.l - g) * logist(r, x[i]) + 0.5 * g * (logist(r, x[i+1]) + logist(r, x[i-1]));
+				// x[i] = x[i] rather than new = old
+				x[i] = (1.l - g) * logist(r, x[i]) + 0.5 * g * (logist(r, x[i+1]) + logist(r, x[i-1]));//no wrapping
 		}
 		counter++;
 		ZXP(out) = x[5];
@@ -511,8 +512,7 @@ void GCM0_next(GCM0 *unit, int inNumSamples)
 	double x[LATTICE];
 	double reciprocal = 1.l / LATTICE;
 
-	for(int i=0; i<LATTICE; i++) 
-		x[i] = unit->x[i];
+	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];
 	float counter = unit->counter;
 
 	float spc;
@@ -521,25 +521,26 @@ void GCM0_next(GCM0 *unit, int inNumSamples)
 	else spc = 1.f;
 	
 	double sum = 0;
-	for(int i=0; i<LATTICE; i++) sum += logist(r, x[i]);
+	for (int i=0; i<LATTICE; i++) sum += logist(r, x[i]);//in theory should be in LOOP
 	
 	LOOP(inNumSamples,
 		if(counter >= spc){
 			counter -= spc;
-			for(int i=0; i<LATTICE; i++)
+			for (int i=0; i<LATTICE; i++)
+				// x[i] = x[i] rather than new = old
 				x[i] = (1.l - g) * logist(r, x[i]) + g * reciprocal * sum;
 		}
 		counter++;
 		ZXP(out) = x[5];
 	)
 	unit->counter = counter;
-	for(int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
 }
 
 void GCM0_Ctor(GCM0 *unit)
 {
 	SETCALC(GCM0_next);
-	for(int i=0; i<LATTICE; i++) unit->x[i] = IN0(3);
+	for (int i=0; i<LATTICE; i++) unit->x[i] = IN0(3);
 	unit->counter = 0.f;
 	GCM0_next(unit, 1);
 }
@@ -553,8 +554,7 @@ void GCM1_next(GCM1 *unit, int inNumSamples)
 	double x[LATTICE];
 	double reciprocal = 1.l / LATTICE;
 	
-	for(int i=0; i<LATTICE; i++) 
-		x[i] = unit->x[i];
+	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];
 	double xm = unit->xm;
 	double frac = unit->frac;
 	float counter = unit->counter;
@@ -577,8 +577,7 @@ void GCM1_next(GCM1 *unit, int inNumSamples)
 			 counter -= spc;
 			 frac = 0.l;
 			 xm = x[5];
-			 for(int i=0; i<LATTICE; i++)
-				 x[i] = (1.l - g) * logist(r, x[i]) + g * reciprocal * sum;
+			 for (int i=0; i<LATTICE; i++) x[i] = (1.l - g) * logist(r, x[i]) + g * reciprocal * sum;
 			 dx = x[5] - xm;
 		 }
 		 counter++;
@@ -629,8 +628,7 @@ void GCM2_next(GCM2 *unit, int inNumSamples)
 	else spc = slope = 1.l;
 
 	double sum = 0;
-	for(int i=0; i<LATTICE; i++) 
-		sum += logist(r, x[i]);
+	for (int i=0; i<LATTICE; i++) sum += logist(r, x[i]);
 	
 	LOOP(inNumSamples,
 		 if(counter >= spc){
@@ -639,8 +637,7 @@ void GCM2_next(GCM2 *unit, int inNumSamples)
 			 xm3 = xm2;
 			 xm2 = xm1;
 			 xm1 = x[5];
-			 for(int i=0; i<LATTICE; i++)
-				 x[i] = (1.l - g) * logist(r, x[i]) + g * reciprocal * sum;
+			 for (int i=0; i<LATTICE; i++) x[i] = (1.l - g) * logist(r, x[i]) + g * reciprocal * sum;
  			 ipol3Coef(xm3, xm2, xm1, x[5], c0, c1, c2, c3);
 		 }
 		 counter++;
@@ -694,8 +691,7 @@ void HCM0_next(HCM0 *unit, int inNumSamples)
 	unsigned short x[GENEBIT];
 	double reciprocal = 1.l / GENEBIT;
 	
-	for (int i=0; i<GENEBIT; i++) 
-		x[i] = unit->x[i];
+	for (int i=0; i<GENEBIT; i++) x[i] = unit->x[i];
 	float counter = unit->counter;
 	
 	float spc;
@@ -710,8 +706,7 @@ void HCM0_next(HCM0 *unit, int inNumSamples)
 		 if(counter >= spc){
 			 counter -= spc;
 			 for (int i=0; i<GENEBIT; i++){
-				 for (int j=0; j<GENEBIT; j++)
-					 sum += logist(r, i2f(flip(x[j], i)));
+				 for (int j=0; j<GENEBIT; j++) sum += logist(r, i2f(flip(x[j], i)));
 				 tmp = (1.l - g) * logist(r, i2f(x[i])) + g * reciprocal * sum;
 				 x[i] = f2i(tmp);
 			 }
