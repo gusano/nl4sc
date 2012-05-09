@@ -29,12 +29,13 @@ Pcml : ListPattern {
 	
 	f {|r,x| ^1.0 - (r * x.squared) }//logistic
 
-	evolve {| copy, r, g |
-		copy.size.do {|i|
-			copy[i] = ((1.0 - g) * this.f(r, copy[i])) 
-						+ (0.5 * g * (this.f(r, copy.wrapAt(i+1)) + this.f(r, copy.wrapAt(i-1))));
+	evolve {| prev, r, g |
+		var next = Array.newClear(prev.size), halfG = g * 0.5;
+		prev.size.do {|i|
+			next[i] = ((1.0 - g) * this.f(r, prev[i])) 
+						+ (halfG * (this.f(r, prev.wrapAt(i+1)) + this.f(r, prev.wrapAt(i-1))));
 		};
-		^copy;
+		^next;
 	}
 
 	embedInStream {|inval|
@@ -45,7 +46,8 @@ Pcml : ListPattern {
 			rVal = rStrm.next(inval);
 			gVal = gStrm.next(inval);
 			if (rVal.isNil || gVal.isNil, { ^inval });
-			inval = yield(this.evolve(items, rVal, gVal));
+			items = this.evolve(items, rVal, gVal);
+			inval = items.yield;
 		}
 		^inval;
 	}
@@ -53,13 +55,11 @@ Pcml : ListPattern {
 
 Pgcm : Pcml {
 	
-	evolve {| copy, r, g |
-		var sum = copy.sum, reciprocal = 1 / copy.size;
-		copy.do {|item,i|
-			copy[i] = ((1.0 - g) * this.f(r,item)) + ((g * reciprocal) * sum);
+	evolve {| prev, r, g |
+		var next = Array.newClear(prev.size), global = g / prev.size * prev.sum;
+		prev.do {|item,i|
+			next[i] = ((1.0 - g) * this.f(r, item)) + global;
 		};
-		^copy;
+		^next;
 	}
 }
-
-//TODO 3D attractors Plorenz, Plangford, Prossler, Prabinovich?

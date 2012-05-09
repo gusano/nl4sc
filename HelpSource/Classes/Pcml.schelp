@@ -38,15 +38,15 @@ code::
 s.boot;
 
 // as degree, patterns transmit spatially
-p = Pcml(Array.fill(5, { 0.1 }), 1.8, 0.3, inf);
-Pbind(\degree, (p * 8).trunc.trace, \dur, 0.125, \amp, 0.1, \pan, Array.series(5, -1, 2/5)).play;
+p = Pcml(Array.fill(10, { 0.1.rand }), 1.8, 0.3, inf);
+Pbind(\degree, (p * 12).trunc, \dur, 0.125, \amp, 0.01, \pan, Array.series(10, -1, 2/10)).play;
 
 // change r
-p = Pcml(Array.fill(5, { 0.1 }), Pseries(1.2, 0.8/500, 500), 0.3, inf);
-Pbind(\degree, (p * 8).trunc, \dur, 0.125, \amp, 0.1, \pan, Array.series(5, -1, 2/5)).play;
+p = Pcml(Array.fill(10, { 0.1.rand }), Pseries(1.2, 0.8/500, 500), 0.1, inf);
+Pbind(\degree, (p * 12).trunc, \dur, 0.125, \amp, 0.01, \pan, Array.series(10, -1, 2/10)).play;
 
 // change g
-p = Pcml(Array.fill(5, { 0.1 }), 2.0, Pseries(0, 1/500, 500), inf);
-Pbind(\degree, (p * 12).trunc, \dur, 0.125, \amp, 0.1, \pan, Array.series(5, -1, 2/5)).play;
+p = Pcml(Array.fill(10, { 0.1.rand }), 2.0, Pseries(0, 1/500, 500), inf);
+Pbind(\degree, (p * 12).trunc, \dur, 0.125, \amp, 0.01, \pan, Array.series(10, -1, 2/10)).play;
 
 ::

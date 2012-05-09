@@ -2,29 +2,27 @@
 //ugens and classes
 
 /* TODO 
-3D attractors Plorenz, Plangford, Prossler, Prabinovich?
+3D attractors lorenz, langford, rossler, rabinovich sprott as kr ugens/patterns?
 does anybody know more 3D attractors?
 multiout ugens, Phcm
 */
 
+//ugens
 "logistic map"
 [Logist0]	
 [Logist1]	
 [Logist2]	
 [TLogist]
-[Plogist]
 
 "coupled map lattice"
 [CML0]
 [CML1]
 [CML2]
-[Pcml]
 
 "globally coupled map"
 [GCM0]
 [GCM1]
 [GCM2]
-[Pgcm]
 
 "hypercubic map"
 [HCM0]
@@ -36,6 +34,11 @@ multiout ugens, Phcm
 
 "functional iteration synthesis"
 [FIS]
+
+//patterns
+[Plogist]
+[Pcml]
+[Pgcm]
 
 //reference
 talk in the supercollider symposium 2012
