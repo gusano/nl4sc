@@ -3,8 +3,8 @@
 
 /* TODO 
 3D attractors lorenz, langford, rossler, rabinovich sprott as kr ugens/patterns?
-does anybody know more 3D attractors?
-multiout ugens, Phcm
+more 3D attractors?
+nl multiout ugens, Phcm
 */
 
 //ugens
