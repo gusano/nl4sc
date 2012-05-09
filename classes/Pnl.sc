@@ -56,9 +56,10 @@ Pcml : ListPattern {
 Pgcm : Pcml {
 	
 	evolve {| prev, r, g |
-		var next = Array.newClear(prev.size), global = g / prev.size * prev.sum;
+		var next = Array.newClear(prev.size), nG = g / prev.size, sum = 0;
+		prev.do {|item,i| sum = sum + this.f(r, item) };
 		prev.do {|item,i|
-			next[i] = ((1.0 - g) * this.f(r, item)) + global;
+			next[i] = ((1.0 - g) * this.f(r, item)) + (nG * sum);
 		};
 		^next;
 	}
