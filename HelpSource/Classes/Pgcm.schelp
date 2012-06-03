@@ -26,7 +26,7 @@ coupling strength [0.0, 1.0]
 argument:: repeats
 stream length
 
-returns:: as a stream, list of values in range  [-1.0, 1.0]
+returns:: as a code::Stream::, list of values in range  [-1.0, 1.0]
 
 INSTANCEMETHODS::
 private:: r, g, f, evolve, embedInStream

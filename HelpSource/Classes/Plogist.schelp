@@ -23,7 +23,7 @@ initial value of x [0.0, 1.0]
 argument:: length
 stream length
 
-returns:: as a stream, values of xn in range  [-1.0, 1.0]
+returns:: as a code::Stream::, values of xn in range  [-1.0, 1.0]
 
 INSTANCEMETHODS::
 private:: r, xi, length, embedInStream
