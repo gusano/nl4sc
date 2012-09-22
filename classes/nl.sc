@@ -9,7 +9,7 @@ Logist0 : NLUGen {
 	}
 }
 Logist1 : Logist0 {}
-Logist2 : Logist0 {}
+Logist3 : Logist0 {}
 
 CML0 : NLUGen {
 	*ar {| freq=22050, r=1.5, g=0.5, xi=0.1, mul=1.0, add=0.0 |
@@ -17,7 +17,7 @@ CML0 : NLUGen {
 	}
 }
 CML1 : CML0 {}
-CML2 : CML0 {}
+CML3 : CML0 {}
 
 GCM0 : NLUGen {
 	*ar {| freq=22050, r=1.5, g=0.5, mul=1.0, add=0.0 |
@@ -25,7 +25,7 @@ GCM0 : NLUGen {
 	}
 }
 GCM1 : GCM0 {}
-GCM2 : GCM0 {}
+GCM3 : GCM0 {}
 
 HCM0 : NLUGen {
 	*ar {| freq=22050, r=1.5, g=0.5, mul=1.0, add=0.0 |
@@ -33,7 +33,7 @@ HCM0 : NLUGen {
 	}
 }
 HCM1 : HCM0 {}
-HCM2 : HCM0 {}
+HCM3 : HCM0 {}
 
 Nagumo : NLUGen {
 	*ar {| uh=0.01, vh=0.01, pulse=0 mul=1, add=0 |

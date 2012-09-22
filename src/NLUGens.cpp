@@ -36,7 +36,7 @@ struct Logist1 : public Unit {
 	double x, xm, frac;
 	float counter;
 };
-struct Logist2 : public Unit {
+struct Logist3 : public Unit {
 	double x, xm1, xm2, xm3, frac, c0, c1, c2, c3;
 	float counter;
 };
@@ -57,7 +57,7 @@ struct CML1 : public Unit {
 	double x[LATTICE];
 	float counter;
 };
-struct CML2 : public Unit {
+struct CML3 : public Unit {
 	double xm1, xm2, xm3, frac, c0, c1, c2, c3;
 	double x[LATTICE];
 	float counter;
@@ -72,7 +72,7 @@ struct GCM1 : public Unit {
 	double x[LATTICE];
 	float counter;
 };
-struct GCM2 : public Unit {
+struct GCM3 : public Unit {
 	double xm1, xm2, xm3, frac, c0, c1, c2, c3;
 	double x[LATTICE];
 	float counter;
@@ -87,7 +87,7 @@ struct HCM1 : public Unit {
 	unsigned short x[GENEBIT];
 	float counter;
 };
-struct HCM2 : public Unit {
+struct HCM3 : public Unit {
 	double xm1, xm2, xm3, frac, c0, c1, c2, c3;
 	unsigned short x[GENEBIT];
 	float counter;
@@ -103,8 +103,8 @@ extern "C" {
 	void Logist0_Ctor(Logist0 *unit);
 	void Logist1_next(Logist1 *unit, int inNumSamples);
 	void Logist1_Ctor(Logist1 *unit);
-	void Logist2_next(Logist2 *unit, int inNumSamples);
-	void Logist2_Ctor(Logist2 *unit);
+	void Logist3_next(Logist3 *unit, int inNumSamples);
+	void Logist3_Ctor(Logist3 *unit);
 	void Nagumo_next(Nagumo *unit, int inNumSamples);
 	void Nagumo_Ctor(Nagumo *unit);
 	void FIS_next(FIS *unit, int inNumSamples);
@@ -113,20 +113,20 @@ extern "C" {
 	void CML0_Ctor(CML0 *unit);
 	void CML1_next(CML1 *unit, int inNumSamples);
 	void CML1_Ctor(CML1 *unit);
-	void CML2_next(CML2 *unit, int inNumSamples);
-	void CML2_Ctor(CML2 *unit);
+	void CML3_next(CML3 *unit, int inNumSamples);
+	void CML3_Ctor(CML3 *unit);
 	void GCM0_next(GCM0 *unit, int inNumSamples);
 	void GCM0_Ctor(GCM0 *unit);
 	void GCM1_next(GCM1 *unit, int inNumSamples);
 	void GCM1_Ctor(GCM1 *unit);
-	void GCM2_next(GCM2 *unit, int inNumSamples);
-	void GCM2_Ctor(GCM2 *unit);
+	void GCM3_next(GCM3 *unit, int inNumSamples);
+	void GCM3_Ctor(GCM3 *unit);
 	void HCM0_next(HCM0 *unit, int inNumSamples);
 	void HCM0_Ctor(HCM0 *unit);
 	void HCM1_next(HCM1 *unit, int inNumSamples);
 	void HCM1_Ctor(HCM1 *unit);
-	void HCM2_next(HCM2 *unit, int inNumSamples);
-	void HCM2_Ctor(HCM2 *unit);
+	void HCM3_next(HCM3 *unit, int inNumSamples);
+	void HCM3_Ctor(HCM3 *unit);
 	void TLogist_next(TLogist *unit, int inNumSamples);
 	void TLogist_Ctor(TLogist *unit);
 }
@@ -233,7 +233,7 @@ void Logist1_Ctor(Logist1 *unit)
 	Logist1_next(unit, 1);
 }
 
-void Logist2_next(Logist2 *unit, int inNumSamples)
+void Logist3_next(Logist3 *unit, int inNumSamples)
 {
 	float *out = ZOUT(0);
 	float freq = ZIN0(0);
@@ -285,14 +285,14 @@ void Logist2_next(Logist2 *unit, int inNumSamples)
 	unit->c3 = c3;
 }
 
-void Logist2_Ctor(Logist2 *unit)
+void Logist3_Ctor(Logist3 *unit)
 {
-	SETCALC(Logist2_next);
+	SETCALC(Logist3_next);
 	unit->x = unit->xm1 = unit->xm2 = unit->xm3 = IN0(2);
 	unit->c0 = unit->c1 = unit->c2 = unit->c3 = 0.l;
 	unit->counter = 0.f;
 	unit->frac = 0.l;
-	Logist2_next(unit, 1);
+	Logist3_next(unit, 1);
 }
 
 void Nagumo_next(Nagumo *unit, int inNumSamples)
@@ -438,7 +438,7 @@ void CML1_Ctor(CML1 *unit)
 	CML1_next(unit, 1);
 }
 
-void CML2_next(CML2 *unit, int inNumSamples)
+void CML3_next(CML3 *unit, int inNumSamples)
 {
 	float *out = ZOUT(0);
 	float freq = ZIN0(0);
@@ -492,15 +492,15 @@ void CML2_next(CML2 *unit, int inNumSamples)
 	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
 }
 
-void CML2_Ctor(CML2 *unit)
+void CML3_Ctor(CML3 *unit)
 {
-	SETCALC(CML2_next);
+	SETCALC(CML3_next);
 	for (int i=0; i<LATTICE; i++) unit->x[i] = IN0(3);
 	unit->xm1 = unit->xm2 = unit->xm3 = unit->x[0];
 	unit->c0 = unit->c1 = unit->c2 = unit->c3 = 0.l;
 	unit->counter = 0.f;
 	unit->frac = 0.l;
-	CML2_next(unit, 1);
+	CML3_next(unit, 1);
 }
 
 void GCM0_next(GCM0 *unit, int inNumSamples)
@@ -599,7 +599,7 @@ void GCM1_Ctor(GCM1 *unit)
 	GCM1_next(unit, 1);
 }
 
-void GCM2_next(GCM2 *unit, int inNumSamples)
+void GCM3_next(GCM3 *unit, int inNumSamples)
 {
 	float *out = ZOUT(0);
 	float freq = ZIN0(0);
@@ -656,15 +656,15 @@ void GCM2_next(GCM2 *unit, int inNumSamples)
 	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
 }
 
-void GCM2_Ctor(GCM2 *unit)
+void GCM3_Ctor(GCM3 *unit)
 {
-	SETCALC(GCM2_next);
+	SETCALC(GCM3_next);
 	for (int i=0; i<LATTICE; i++) unit->x[i] = IN0(3);
 	unit->xm1 = unit->xm2 = unit->xm3 = unit->x[0];
 	unit->c0 = unit->c1 = unit->c2 = unit->c3 = 0.l;
 	unit->counter = 0.f;
 	unit->frac = 0.l;
-	GCM2_next(unit, 1);
+	GCM3_next(unit, 1);
 }
 
 inline unsigned flip(unsigned x, unsigned bit);
@@ -786,7 +786,7 @@ void HCM1_Ctor(HCM1 *unit)
 	HCM1_next(unit, 1);
 }
 
-void HCM2_next(HCM2 *unit, int inNumSamples)
+void HCM3_next(HCM3 *unit, int inNumSamples)
 {
 	float *out = ZOUT(0);
 	float freq = ZIN0(0);
@@ -850,15 +850,15 @@ void HCM2_next(HCM2 *unit, int inNumSamples)
 	for(int i=0; i<GENEBIT; i++) unit->x[i] = x[i];
 }
 
-void HCM2_Ctor(HCM2 *unit)
+void HCM3_Ctor(HCM3 *unit)
 {
-	SETCALC(HCM2_next);
+	SETCALC(HCM3_next);
 	for (int i=0; i<GENEBIT; i++) unit->x[i] = 1;
 	unit->xm1 = unit->xm2 = unit->xm3 = unit->x[4];
 	unit->c0 = unit->c1 = unit->c2 = unit->c3 = 0.l;
 	unit->counter = 0.f;
 	unit->frac = 0.l;
-	HCM2_next(unit, 1);
+	HCM3_next(unit, 1);
 }
 
 void TLogist_next(TLogist *unit, int inNumSamples)
@@ -886,17 +886,17 @@ void load(InterfaceTable *inTable)
 	ft = inTable;
 	DefineSimpleUnit(Logist0);
 	DefineSimpleUnit(Logist1);
-	DefineSimpleUnit(Logist2);
+	DefineSimpleUnit(Logist3);
 	DefineSimpleUnit(Nagumo);
 	DefineSimpleUnit(FIS);
 	DefineSimpleUnit(CML0);
 	DefineSimpleUnit(CML1);
-	DefineSimpleUnit(CML2);
+	DefineSimpleUnit(CML3);
 	DefineSimpleUnit(GCM0);
 	DefineSimpleUnit(GCM1);
-	DefineSimpleUnit(GCM2);
+	DefineSimpleUnit(GCM3);
 	DefineSimpleUnit(HCM0);
 	DefineSimpleUnit(HCM1);
-	DefineSimpleUnit(HCM2);
+	DefineSimpleUnit(HCM3);
 	DefineSimpleUnit(TLogist);
 }
