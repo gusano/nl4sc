@@ -64,7 +64,7 @@ Pgcm : Pcml {
 		^next;
 	}
 }
-
+/*
 Plorenz : Pattern {
 	var <>h, <>s, <>r, <>b, <>xi, <>yi, <>zi, <>length;
 	//s: the fluid viscosity of a substance to its thermal conductivity
@@ -92,6 +92,7 @@ Plorenz : Pattern {
 		^inval;
 	}
 }
+*/
 /*
 p = Plorenz(0.05).asStream;
 { p.next }.plot;

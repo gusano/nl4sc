@@ -1,0 +1,35 @@
+
+CLASS:: HCM0
+summary:: ugen hypercubic coupled maps
+categories:: nl4sc, UGens>nl4sc
+
+description::
+no interpolation.
+
+CLASSMETHODS::
+
+METHOD:: ar
+
+argument:: freq
+iteration frequency
+
+argument:: r
+equation variable [1.0, 2.0]
+
+argument:: g
+coupling strength [0.0, 1.0]
+
+argument:: xi
+initial value of x [0.0, 1.0]
+
+returns:: values of xn in range  [-1.0, 1.0]
+
+
+EXAMPLES::
+
+code::
+s.boot;
+
+//modulate r & g
+{ HCM0.ar(SampleRate.ir/10, MouseY.kr(1, 2), MouseX.kr(0, 0.0001)) * 0.1 }.play;
+::
