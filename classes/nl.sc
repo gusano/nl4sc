@@ -4,7 +4,7 @@ NLUGen : UGen {
 }
 
 Logist0 : NLUGen {
-	*ar {| freq=22050, r=1.5, xi=0.1, mul=1, add=0 |
+	*ar {| freq=22050, r=1.5, xi=0.001, mul=1, add=0 |
 		^this.multiNew(\audio, freq, r, xi).madd(mul, add);
 	}
 }
@@ -12,7 +12,7 @@ Logist1 : Logist0 {}
 Logist3 : Logist0 {}
 
 CML0 : NLUGen {
-	*ar {| freq=22050, r=1.5, g=0.5, xi=0.1, mul=1.0, add=0.0 |
+	*ar {| freq=22050, r=1.5, g=0.5, xi=0.001, mul=1.0, add=0.0 |
 		^this.multiNew(\audio, freq, r, g, xi).madd(mul, add);
 	}
 }
