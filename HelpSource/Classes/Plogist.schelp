@@ -6,9 +6,7 @@ related:: Classes/NLUGen
 
 description::
 implements the quadratic recurrence equation:
-math::
 x_{n+1} = 1 - rx_{n}^2
-::
 
 CLASSMETHODS::
 

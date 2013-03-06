@@ -18,8 +18,7 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
 
-// NLUGens by Yota Morimoto (http://yota.tehis.net/)
-// 2012 v0.5
+// NLUGens by yota morimoto (http://yota.tehis.net/)
 
 #include "SC_PlugIn.h"
 
@@ -98,7 +97,6 @@ struct TLogist : public Logist0 {
 };
 
 extern "C" {
-	void load(InterfaceTable *inTable);
 	void Logist0_next(Logist0 *unit, int inNumSamples);
 	void Logist0_Ctor(Logist0 *unit);
 	void Logist1_next(Logist1 *unit, int inNumSamples);
@@ -881,7 +879,7 @@ void TLogist_Ctor(TLogist *unit)
 	unit->trig = ZIN0(2);
 }
 
-void load(InterfaceTable *inTable)
+PluginLoad(NL)
 {
 	ft = inTable;
 	DefineSimpleUnit(Logist0);

@@ -64,7 +64,7 @@ Pgcm : Pcml {
 		^next;
 	}
 }
-/*
+
 Plorenz : Pattern {
 	var <>h, <>s, <>r, <>b, <>xi, <>yi, <>zi, <>length;
 	//s: the fluid viscosity of a substance to its thermal conductivity
@@ -92,13 +92,9 @@ Plorenz : Pattern {
 		^inval;
 	}
 }
-*/
+
 /*
-p = Plorenz(0.05).asStream;
-{ p.next }.plot;
-Array.fill(10, { p.next }).plot;
-Plotter
-Pbind(\freq, p.next).play;
+p = Plorenz(0.01, 7, 28, 2.667, 0, 20, 0).asStream;
 (
 Ê Ê var width = 500, height = 400, rate = 0.005;
 Ê Ê var w, u;
@@ -116,7 +112,7 @@ Pbind(\freq, p.next).play;
 Ê Ê u.add(Canvas3DItem()
 Ê Ê Ê Ê .color_(Color.green)
 Ê Ê Ê Ê .width_(1.5)
-Ê Ê Ê Ê .paths_([900.collect { p.next * 0.1 }])
+Ê Ê Ê Ê .paths_([2000.collect { p.next * 0.1 }])
 Ê Ê );
 
 Ê Ê // add cube
