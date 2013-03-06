@@ -5,9 +5,9 @@ categories:: nl4sc, UGens>nl4sc
 
 description::
 implements the quadratic recurrence equation with cubic-interpolation:
-math::
+
 x_{n+1} = 1 - rx_{n}^2
-::
+
 
 CLASSMETHODS::
 

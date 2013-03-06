@@ -6,9 +6,9 @@ related:: Classes/NLUGen
 
 description::
 implements globally coupled maps where f(x) is the logistic equation whose variable is r :
-math::
+
 x_{n+1}(i) = (1 - g) f(x_{n}(i)) + {g \over N} \sum_{j=1} ^ {N} f(x_{n}(j))
-::
+
 
 CLASSMETHODS::
 

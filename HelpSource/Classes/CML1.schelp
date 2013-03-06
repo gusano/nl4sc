@@ -5,9 +5,9 @@ categories:: nl4sc, UGens>nl4sc
 
 description::
 implements coupled map lattice where f(x) is the logistic equation whose variable is r :
-math::
+
 x_{n+1}(i) = (1 - g) f(x_{n}(i)) + {g \over 2} (f(x_{n}(i-1)) + f(x_{n}(i+1)))
-::
+
 linear interpolation.
 
 CLASSMETHODS::
