@@ -1,0 +1,1 @@
+/usr/bin/c++   -bundle -Wl,-headerpad_max_install_names   -o NLUGens.scx CMakeFiles/NLUGens.dir/NLUGens.cpp.o 

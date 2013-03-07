@@ -1,0 +1,1 @@
+/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/CMakeFiles/NLUGens.dir

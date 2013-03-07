@@ -1,17 +1,11 @@
 //nl4sc: nonlinear dynamical systems for supercollider
 //ugens and classes
 
-/* TODO 
-3D attractors lorenz, langford, rossler, rabinovich sprott as kr ugens/patterns?
-more 3D attractors?
-nl multiout ugens, Phcm
-*/
-
 //ugens
 "logistic map"
-[Logist0]	
-[Logist1]	
-[Logist3]	
+[Logist0]
+[Logist1]
+[Logist3]
 [TLogist]
 
 "coupled map lattice"
@@ -47,5 +41,11 @@ talk in the supercollider symposium 2012
 yota morimoto
 yotamorimoto [at] gmail.com
 
-//maintained in github 
+//maintained in github
 https://github.com/yotamorimoto/nl4sc
+
+/* TODO
+3D attractors lorenz, langford, rossler, rabinovich sprott as kr ugens/patterns?
+more 3D attractors?
+nl multiout ugens, Phcm
+*/

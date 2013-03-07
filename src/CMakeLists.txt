@@ -13,7 +13,7 @@ endif()
 
 add_library(NLUGens MODULE NLUGens.cpp) 
 
-#to compile:
-#/Applications/CMake\ 2.8-10.app/Contents/bin/cmake -DSC_PATH=/Users/yota/Deployment/supercollider .
+#to compile run:
+#cmake -DSC_PATH=/Users/yota/Deployment/supercollider .
 #then
 #make
