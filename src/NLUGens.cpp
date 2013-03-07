@@ -351,8 +351,9 @@ void CML0_next(CML0 *unit, int inNumSamples)
 	double r = ZIN0(1);
 	double g = ZIN0(2);
 	double x[LATTICE];
+	double t[LATTICE];
 
-	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];	
+	memcpy(x, unit->x, sizeof(unit->x));
 	float counter = unit->counter;
 
 	float spc;
@@ -366,15 +367,20 @@ void CML0_next(CML0 *unit, int inNumSamples)
 	LOOP(inNumSamples,
 		if(counter >= spc){
 			counter -= spc;
-			for (int i=1; i<LATTICE-1; i++)
+			for (int i=1; i<LATTICE-1; i++) {
 				// x[i] = x[i] rather than new = old
+				// or wrapping? sc_wrap(i-1, 0, MAXWIDTH-1)
 				x[i] = (1.l - g) * logist(r, x[i]) + 0.5 * g * (logist(r, x[i+1]) + logist(r, x[i-1]));//no wrapping
+				// t = x then x = t
+				//t[i] = (1.l - g) * logist(r, x[i]) + 0.5 * g * (logist(r, x[i+1]) + logist(r, x[i-1]));//no wrapping
+			}
+			//memcpy(x, t, sizeof(t));
 		}
 		counter++;
-		ZXP(out) = x[5];
+		ZXP(out) = t[5];
 	)
 	unit->counter = counter;
-	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 }
 
 void CML0_Ctor(CML0 *unit)
@@ -393,7 +399,7 @@ void CML1_next(CML1 *unit, int inNumSamples)
 	double g = ZIN0(2);
 	double x[LATTICE];
 
-	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];
+	memcpy(x, unit->x, sizeof(unit->x));
 	double xm = unit->xm;
 	double frac = unit->frac;
 	float counter = unit->counter;
@@ -421,7 +427,7 @@ void CML1_next(CML1 *unit, int inNumSamples)
 		 ZXP(out) = xm + dx * frac;
 		 frac += slope;
 	)
-	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 	unit->xm = xm;
 	unit->frac = frac;
 	unit->counter = counter;
@@ -444,7 +450,7 @@ void CML3_next(CML3 *unit, int inNumSamples)
 	double g = ZIN0(2);
 	double x[LATTICE];
 
-	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];	
+	memcpy(x, unit->x, sizeof(unit->x));
 	double xm1 = unit->xm1;
 	double xm2 = unit->xm2;
 	double xm3 = unit->xm3;
@@ -487,7 +493,7 @@ void CML3_next(CML3 *unit, int inNumSamples)
 	unit->c1 = c1;
 	unit->c2 = c2;
 	unit->c3 = c3;
-	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 }
 
 void CML3_Ctor(CML3 *unit)
@@ -510,7 +516,7 @@ void GCM0_next(GCM0 *unit, int inNumSamples)
 	double x[LATTICE];
 	double reciprocal = 1.l / LATTICE;
 
-	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];
+	memcpy(x, unit->x, sizeof(unit->x));
 	float counter = unit->counter;
 
 	float spc;
@@ -532,7 +538,7 @@ void GCM0_next(GCM0 *unit, int inNumSamples)
 		ZXP(out) = x[5];
 	)
 	unit->counter = counter;
-	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 }
 
 void GCM0_Ctor(GCM0 *unit)
@@ -552,7 +558,7 @@ void GCM1_next(GCM1 *unit, int inNumSamples)
 	double x[LATTICE];
 	double reciprocal = 1.l / LATTICE;
 	
-	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];
+	memcpy(x, unit->x, sizeof(unit->x));
 	double xm = unit->xm;
 	double frac = unit->frac;
 	float counter = unit->counter;
@@ -582,7 +588,7 @@ void GCM1_next(GCM1 *unit, int inNumSamples)
 		 ZXP(out) = xm + dx * frac;
 		 frac += slope;
 	)
-	for(int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 	unit->xm = xm;
 	unit->frac = frac;
 	unit->counter = counter;
@@ -606,7 +612,7 @@ void GCM3_next(GCM3 *unit, int inNumSamples)
 	double x[LATTICE];
 	double reciprocal = 1.l / LATTICE;
 	
-	for (int i=0; i<LATTICE; i++) x[i] = unit->x[i];	
+	memcpy(x, unit->x, sizeof(unit->x));
 	double xm1 = unit->xm1;
 	double xm2 = unit->xm2;
 	double xm3 = unit->xm3;
@@ -651,7 +657,7 @@ void GCM3_next(GCM3 *unit, int inNumSamples)
 	unit->c1 = c1;
 	unit->c2 = c2;
 	unit->c3 = c3;
-	for (int i=0; i<LATTICE; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 }
 
 void GCM3_Ctor(GCM3 *unit)
@@ -689,7 +695,7 @@ void HCM0_next(HCM0 *unit, int inNumSamples)
 	unsigned short x[GENEBIT];
 	double reciprocal = 1.l / GENEBIT;
 	
-	for (int i=0; i<GENEBIT; i++) x[i] = unit->x[i];
+	memcpy(x, unit->x, sizeof(unit->x));
 	float counter = unit->counter;
 	
 	float spc;
@@ -712,7 +718,7 @@ void HCM0_next(HCM0 *unit, int inNumSamples)
 		 counter++;
 		 ZXP(out) = i2f(x[4]);
 	)
-	for(int i=0; i<GENEBIT; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 	unit->counter = counter;
 }
 
@@ -733,8 +739,7 @@ void HCM1_next(HCM1 *unit, int inNumSamples)
 	unsigned short x[GENEBIT];
 	double reciprocal = 1.l / GENEBIT;
 	
-	for (int i=0; i<GENEBIT; i++) 
-		x[i] = unit->x[i];
+	memcpy(x, unit->x, sizeof(unit->x));
 	double xm = unit->xm;
 	double frac = unit->frac;
 	float counter = unit->counter;
@@ -769,7 +774,7 @@ void HCM1_next(HCM1 *unit, int inNumSamples)
 		 ZXP(out) = xm + dx * frac;
 		 frac += slope;
 	)
-	for(int i=0; i<GENEBIT; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 	unit->xm = xm;
 	unit->frac = frac;
 	unit->counter = counter;
@@ -803,8 +808,7 @@ void HCM3_next(HCM3 *unit, int inNumSamples)
 	double c2 = unit->c2;
 	double c3 = unit->c3;
 
-	for (int i=0; i<GENEBIT; i++) 
-		x[i] = unit->x[i];
+	memcpy(x, unit->x, sizeof(unit->x));
 	
 	float spc;
 	double slope;
@@ -845,7 +849,7 @@ void HCM3_next(HCM3 *unit, int inNumSamples)
 	unit->c1 = c1;
 	unit->c2 = c2;
 	unit->c3 = c3;
-	for(int i=0; i<GENEBIT; i++) unit->x[i] = x[i];
+	memcpy(unit->x, x, sizeof(x));
 }
 
 void HCM3_Ctor(HCM3 *unit)

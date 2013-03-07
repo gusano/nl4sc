@@ -45,6 +45,7 @@ yotamorimoto [at] gmail.com
 https://github.com/yotamorimoto/nl4sc
 
 /* TODO
+wrap for cml,gcm,hcm?
 3D attractors lorenz, langford, rossler, rabinovich sprott as kr ugens/patterns?
 more 3D attractors?
 nl multiout ugens, Phcm
