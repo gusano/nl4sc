@@ -250,7 +250,7 @@ void Logist3_next(Logist3 *unit, int inNumSamples)
 	if(freq < SAMPLERATE){
 		spc = SAMPLERATE / sc_max(freq, 0.001f);
 		slope = 1.l / spc;
-	} 
+	}
 	else spc = slope = 1.l;
 
 	LOOP(inNumSamples,
