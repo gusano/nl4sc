@@ -224,7 +224,7 @@ SC_Types.h
 string.h
 -
 
-/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/NLUGens.cpp
+/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/NLUGens.cpp
 SC_PlugIn.h
-/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/SC_PlugIn.h
+/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/SC_PlugIn.h
 

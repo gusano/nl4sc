@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/NLUGens.cpp" "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/CMakeFiles/NLUGens.dir/NLUGens.cpp.o"
+  "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/NLUGens.cpp" "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/CMakeFiles/NLUGens.dir/NLUGens.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "Clang")
 

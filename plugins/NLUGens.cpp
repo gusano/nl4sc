@@ -347,7 +347,7 @@ void CML0_next(CML0 *unit, int inNumSamples)
 	double r = ZIN0(1);
 	double g = ZIN0(2);
 	double x[LATTICE];
-	double t[LATTICE];
+//	double t[LATTICE];
 
 	memcpy(x, unit->x, sizeof(unit->x));
 	float counter = unit->counter;
@@ -373,7 +373,8 @@ void CML0_next(CML0 *unit, int inNumSamples)
 			//memcpy(x, t, sizeof(t));
 		}
 		counter++;
-		ZXP(out) = t[5];
+		//ZXP(out) = t[5];
+		 ZXP(out) = x[5];
 	)
 	unit->counter = counter;
 	memcpy(unit->x, x, sizeof(x));

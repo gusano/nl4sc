@@ -38,22 +38,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Applications/CMake 2.8-10.app/Contents/bin/cmake"
+CMAKE_COMMAND = /Applications/CMake2.8-10.app/Contents/bin/cmake
 
 # The command to remove a file.
-RM = "/Applications/CMake 2.8-10.app/Contents/bin/cmake" -E remove -f
+RM = /Applications/CMake2.8-10.app/Contents/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-10.app/Contents/bin/ccmake"
+CMAKE_EDIT_COMMAND = /Applications/CMake2.8-10.app/Contents/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src"
+CMAKE_SOURCE_DIR = "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src"
+CMAKE_BINARY_DIR = "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins"
 
 #=============================================================================
 # Target rules for target CMakeFiles/NLUGens.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = "/Users/yota/Library/Application Support/SuperCollider/Extens
 CMakeFiles/NLUGens.dir/all:
 	$(MAKE) -f CMakeFiles/NLUGens.dir/build.make CMakeFiles/NLUGens.dir/depend
 	$(MAKE) -f CMakeFiles/NLUGens.dir/build.make CMakeFiles/NLUGens.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/CMakeFiles"  1
+	$(CMAKE_COMMAND) -E cmake_progress_report "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/CMakeFiles"  1
 	@echo "Built target NLUGens"
 .PHONY : CMakeFiles/NLUGens.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/NLUGens.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/NLUGens.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/CMakeFiles" 1
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/CMakeFiles" 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/NLUGens.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/CMakeFiles" 0
 .PHONY : CMakeFiles/NLUGens.dir/rule
 
 # Convenience name for target.

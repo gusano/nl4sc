@@ -41,12 +41,12 @@ talk in the supercollider symposium 2012
 yota morimoto
 yotamorimoto [at] gmail.com
 
-//maintained in github
-https://github.com/yotamorimoto/nl4sc
 
 /* TODO
-wrap for cml,gcm,hcm?
-3D attractors lorenz, langford, rossler, rabinovich sprott as kr ugens/patterns?
+Phcm
+wrap for lattice ugens; cml, gcm, hcm.
+3D attractors; lorenz, langford, rossler, rabinovich sprott as patterns?
+3D attractors; lorenz, langford, rossler, rabinovich sprott as kr ugens?
 more 3D attractors?
-nl multiout ugens, Phcm
+nl multiout ugens
 */

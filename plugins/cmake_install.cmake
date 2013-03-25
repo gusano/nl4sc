@@ -1,4 +1,4 @@
-# Install script for directory: /Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src
+# Install script for directory: /Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,7 +33,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/src/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/Users/yota/Library/Application Support/SuperCollider/Extensions/nl4sc/plugins/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
